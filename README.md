@@ -34,3 +34,5 @@ Make a beautiful circular airdrop-like ui
 Accept/decline option when reciving files instead of the file dialog.
 
 Windows context menu on files (click on a file-> share -> Drop)
+
+Profile pics for users
