@@ -1,5 +1,5 @@
 # Drop
-A free minimalistic cross platform airdrop alternative.
+A free minimalistic cross platform airdrop alternative built with Avalonia UI and c#
 
 You can drop files to others on your LAN.
 
