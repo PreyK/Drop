@@ -7,6 +7,20 @@ It's pretty barebones and messy right now, but maybe you can use some parts of i
 
 ![alt text](https://raw.githubusercontent.com/PreyK/Drop/master/drop.PNG)
 
+BUILD:
+
+(WIN/OSX)
+
+Open the .sln with visual studio
+
+(LINUX)
+
+change the target to .net core
+
+dotnet restore
+
+dotnet run
+
 TODO:
 
 Sending multiple files
