@@ -1,0 +1,9 @@
+﻿<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="GetFileDialog">
+  <StackPanel>
+    <TextBlock Name="dialogText">ASDASDF</TextBlock>
+    <Button Name="acceptBtn">accept</Button>
+    <Button Name ="declineBtn">decline</Button>
+  </StackPanel>
+</Window>

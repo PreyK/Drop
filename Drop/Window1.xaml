@@ -1,0 +1,5 @@
+﻿<Window xmlns="https://github.com/avaloniaui"
+        xmlns:local="clr-namespace:Drop"
+        Title="Window1">
+  <local:DragDrop/>
+</Window>
