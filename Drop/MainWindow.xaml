@@ -4,6 +4,15 @@
         Title="Drop">
 
     <Grid Name="gridFolders">
+      
+      <Image Name="MeUser"/>
+      <LayoutTransformControl>
+        <LayoutTransformControl.LayoutTransform Name="asd">
+          <RotateTransform x:Name="asd"/>
+        </LayoutTransformControl.LayoutTransform>
+        <Image Name="MeBg"/>
+      </LayoutTransformControl>
+      
       <Button  HorizontalAlignment="3" VerticalAlignment="3" Name="updateButton" Width="100" Height="100">UpdateClients</Button>
       <WrapPanel  Name="panel_images">
       </WrapPanel>
@@ -11,6 +20,7 @@
       <Image ></Image>
   
     </Grid>
+  
 
   
 </Window>

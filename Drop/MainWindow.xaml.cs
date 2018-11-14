@@ -10,7 +10,8 @@ using System;
 using System.Collections.Generic;
 using Drop.Networking;
 using Avalonia.Threading;
-
+using Drop.Utils;
+using Avalonia.Media;
 namespace Drop
 {
     public class MainWindow : Window
@@ -36,6 +37,13 @@ namespace Drop
 
             this.CanResize = false;
             AvaloniaXamlLoader.Load(this);
+
+            UserImg = this.Get<Image>("MeUser"); 
+            Utils.TickManager.InitMe();
+            Utils.TickManager.OnTickEvent += new Utils.TickManager.OnTickDelegate(Update);
+
+            SetMyPic();
+
             ips = new List<string>();
 
             this.FindControl<Button>("updateButton").Click += delegate
@@ -48,6 +56,68 @@ namespace Drop
             NetworkManager.OnMessageEvent += new NetworkManager.OnMessageRecived(OnMessage);
             SendDiscovery();
         }
+        int radius = 200;
+        private int y=0;
+        private int x=0;
+
+        private Image UserImg;
+
+        void SetMyPic()
+        {
+
+
+
+
+            System.Drawing.Bitmap f = new System.Drawing.Bitmap("Assets\\profile.jpg");
+
+
+            System.Drawing.Image i = Utils.GraphicsExtensions.MakeSquarePhoto(f, 512);
+            System.Drawing.Image dst = Utils.GraphicsExtensions.CropToCircle(i, System.Drawing.Color.Transparent);
+
+            dst.Save("Assets\\profile_ca.jpg");
+
+
+            Bitmap aw = new Bitmap("Assets\\profile_ca.jpg");
+
+            var u = this.Get<Image>("MeUser");
+            u.Width = 0;
+            u.Height = 0;
+            u.Margin = new Avalonia.Thickness(20, 20, 20, 0);
+            u.Source = aw;
+            u.ZIndex = 10;
+
+            Bitmap ak = new Bitmap("Assets\\e.png");
+
+            var ub = this.Get<Image>("MeBg");
+
+           //n this.Get<RotateTransform>("asd").Angle = 180;
+            rotator = this.Get<RotateTransform>("asd");
+            ub.ZIndex = -10;
+            ub.Width = 170;
+            ub.Height = 170;
+            ub.Margin = new Avalonia.Thickness(20, 20, 20, 0);
+            ub.Source = ak;
+
+        }
+        RotateTransform rotator;
+     
+       private int cycles;
+        private float fcycle;
+       private async void Update()
+        {
+            await Dispatcher.UIThread.InvokeAsync(() =>
+            {
+                cycles++;
+                fcycle = cycles;
+                if(UserImg.Width<150)
+                UserImg.Width = Mathf.BounceEaseOut(fcycle, 0, 150, 2/0.016f);
+            });
+
+        }
+
+        
+
+
 
 
         public void BtnClick()

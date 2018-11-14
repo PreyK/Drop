@@ -37,6 +37,15 @@
     <Folder Include="Assets\" />
   </ItemGroup>
   <ItemGroup>
+    <None Update="Assets\e.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Assets\e_s.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Assets\profile.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Update="Assets\user.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
