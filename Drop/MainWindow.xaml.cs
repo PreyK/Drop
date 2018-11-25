@@ -12,6 +12,9 @@ using Drop.Networking;
 using Avalonia.Threading;
 using Drop.Utils;
 using Avalonia.Media;
+using Avalonia.Controls.Shapes;
+using Avalonia.Platform;
+
 namespace Drop
 {
     public class MainWindow : Window
@@ -21,7 +24,12 @@ namespace Drop
 
         List<String> ips;
         List<DropUser> users;
-        
+        private Image UserImg;
+        // for transistions stuff
+        private int cycles;
+        private float fcycle;
+        public List<string> userIps=new List<string>();
+
         public MainWindow()
         {
             InitializeComponent();
@@ -38,7 +46,7 @@ namespace Drop
             this.CanResize = false;
             AvaloniaXamlLoader.Load(this);
 
-            UserImg = this.Get<Image>("MeUser"); 
+            UserImg = this.Get<Image>("MeUser");
             Utils.TickManager.InitMe();
             Utils.TickManager.OnTickEvent += new Utils.TickManager.OnTickDelegate(Update);
 
@@ -55,21 +63,18 @@ namespace Drop
             Drop.Networking.NetworkManager.InitMe();
             NetworkManager.OnMessageEvent += new NetworkManager.OnMessageRecived(OnMessage);
             SendDiscovery();
-        }
-        int radius = 200;
-        private int y=0;
-        private int x=0;
 
-        private Image UserImg;
+
+           // this.Get<Avalonia.Controls.Shapes.Ellipse>("asdwek").SetValue(Canvas.TopProperty, 10f);
+      
+
+        }
+
+
 
         void SetMyPic()
         {
-
-
-
-
             System.Drawing.Bitmap f = new System.Drawing.Bitmap("Assets\\profile.jpg");
-
 
             System.Drawing.Image i = Utils.GraphicsExtensions.MakeSquarePhoto(f, 512);
             System.Drawing.Image dst = Utils.GraphicsExtensions.CropToCircle(i, System.Drawing.Color.Transparent);
@@ -91,39 +96,67 @@ namespace Drop
             var ub = this.Get<Image>("MeBg");
 
            //n this.Get<RotateTransform>("asd").Angle = 180;
-            rotator = this.Get<RotateTransform>("asd");
+            //rotator = this.Get<RotateTransform>("asd");
             ub.ZIndex = -10;
-            ub.Width = 170;
-            ub.Height = 170;
+            ub.Width = 130;
+            ub.Height = 130;
             ub.Margin = new Avalonia.Thickness(20, 20, 20, 0);
             ub.Source = ak;
 
         }
-        RotateTransform rotator;
+       
      
-       private int cycles;
-        private float fcycle;
+
        private async void Update()
         {
             await Dispatcher.UIThread.InvokeAsync(() =>
             {
                 cycles++;
                 fcycle = cycles;
-                if(UserImg.Width<150)
-                UserImg.Width = Mathf.BounceEaseOut(fcycle, 0, 150, 2/0.016f);
+                if(UserImg.Width<120)
+                UserImg.Width = Mathf.BounceEaseOut(fcycle, 0, 120, 1.5f/0.016f);
             });
 
         }
-
-        
-
-
-
-
+        int c=0;
         public void BtnClick()
         {
-             ClearUi();
-             SendDiscovery();
+            c++;
+           //  ClearUi();
+          //   SendDiscovery();
+            AddUserToUi("127.0.0."+c.ToString());
+            //DrawCircles(6);
+        }
+
+
+        private void DrawCircles(int numCircles)
+        {
+            var canvas = this.Get<Canvas>("mainCanvas");
+           
+            float angle = (360 / numCircles);
+
+            var Hyp = 130;
+
+            for (int i = 0; i <= numCircles; i++)
+            {
+                var currentAngle = i * angle;
+                var circlePosXOpp = Math.Sin(currentAngle.ToDegrees()) * Hyp;
+                var circlePosYAdj = Math.Cos(currentAngle.ToDegrees()) * Hyp;
+
+                Ellipse e = new Ellipse
+                {
+                    Width = 80,
+                    Height = 80,
+                    Fill = new SolidColorBrush(Colors.Red)
+                };
+                DropUser u = new DropUser();
+                u.InitMe("dummy");
+                u.Width = 80;
+                u.Height = 80;
+                canvas.Children.Add(u);
+                u.SetValue(Canvas.TopProperty, circlePosYAdj+170);
+                u.SetValue(Canvas.LeftProperty, circlePosXOpp+160);
+            }
         }
 
         private void ClearUi()
@@ -161,9 +194,9 @@ namespace Drop
                 d.thatIp = ip;
                 d.Show();
             });
-
-
         }
+
+
 
        async void AddUserToUi(string ip)
        {
@@ -175,12 +208,15 @@ namespace Drop
             {
                 if (!ips.Contains(ip))
                 {
-                    DropUser u = new DropUser();
-                    u.InitMe(ip);
-                    this.Get<WrapPanel>("panel_images").Children.Add(u);
+                   // DropUser u = new DropUser();
+                    //u.InitMe(ip);
+                    //this.Get<WrapPanel>("panel_images").Children.Add(u);
                     ips.Add(ip);
+                    var canvas = this.Get<Canvas>("mainCanvas");
+                    canvas.Children.Clear();
+                    DrawCircles(ips.Count);
+                    
                 }
-               
             });
 
         }

@@ -3,18 +3,18 @@
         xmlns:local="clr-namespace:Drop"
         Title="Drop">
 
+
     <Grid Name="gridFolders">
-      
+      <Canvas Name="mainCanvas"  Width="400" Height="400">
+
+
+      </Canvas>
+
       <Image Name="MeUser"/>
-      <LayoutTransformControl>
-        <LayoutTransformControl.LayoutTransform Name="asd">
-          <RotateTransform x:Name="asd"/>
-        </LayoutTransformControl.LayoutTransform>
-        <Image Name="MeBg"/>
-      </LayoutTransformControl>
+      <Image Name="MeBg"/>
       
-      <Button  HorizontalAlignment="3" VerticalAlignment="3" Name="updateButton" Width="100" Height="100">UpdateClients</Button>
-      <WrapPanel  Name="panel_images">
+      <Button HorizontalAlignment="3" VerticalAlignment="3" Name="updateButton" Width="100" Height="100">UpdateClients</Button>
+      <WrapPanel Name="panel_images">
       </WrapPanel>
       
       <Image ></Image>

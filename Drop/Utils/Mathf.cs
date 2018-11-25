@@ -41,5 +41,9 @@ namespace Drop.Utils
         {
             return firstFloat * (1 - by) + secondFloat * by;
         }
+        public static double ToDegrees(this float angle)
+        {
+            return angle * Math.PI / 180f;
+        }
     }
 }

@@ -51,11 +51,11 @@ namespace Drop
         {
 
             var u = this.Get<Image>("UserImage");
-            u.Width = 60;
-            u.Height = 60;
-            u.Margin = new Avalonia.Thickness(20, 20, 20, 0);
+            u.Width = 80;
+            u.Height = 80;
+            u.Margin = new Avalonia.Thickness(0, 0, 0, 0);
 
-            Bitmap b = new Bitmap("Assets\\user.png");
+            Bitmap b = new Bitmap("Assets\\profile_ca.jpg");
 
             u.Source = b;
         }
