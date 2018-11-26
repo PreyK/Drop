@@ -19,10 +19,6 @@
     <None Remove="Window1.xaml" />
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Include="Avalonia" Version="0.7.1-build538-beta" />
-    <PackageReference Include="Avalonia.Desktop" Version="0.7.1-build538-beta" />
-  </ItemGroup>
-  <ItemGroup>
     <EmbeddedResource Update="DropUser.xaml">
       <Generator>MSBuild:Compile</Generator>
     </EmbeddedResource>
@@ -35,6 +31,10 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Assets\" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="Avalonia" Version="0.7.0" />
+    <PackageReference Include="Avalonia.Desktop" Version="0.7.0" />
   </ItemGroup>
   <ItemGroup>
     <None Update="Assets\e.png">

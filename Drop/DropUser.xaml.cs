@@ -6,6 +6,7 @@ using Avalonia.Controls.Primitives;
 using Avalonia.Input;
 using Avalonia.Interactivity;
 using Avalonia.Markup.Xaml;
+using Avalonia.Media;
 using Avalonia.Media.Imaging;
 
 namespace Drop
@@ -51,8 +52,8 @@ namespace Drop
         {
 
             var u = this.Get<Image>("UserImage");
-            u.Width = 80;
-            u.Height = 80;
+            u.Width = 60;
+            u.Height = 60;
             u.Margin = new Avalonia.Thickness(0, 0, 0, 0);
 
             Bitmap b = new Bitmap("Assets\\profile_ca.jpg");
@@ -65,7 +66,7 @@ namespace Drop
             var usert = this.Get<TextBlock>("UserName");
             usert.TextAlignment = Avalonia.Media.TextAlignment.Center;
             usert.Text = s;
-            usert.Margin = new Avalonia.Thickness(0, 0, 0, 20);
+            usert.Margin = new Avalonia.Thickness(0, 0, 0, 0);
         }
     }
 }

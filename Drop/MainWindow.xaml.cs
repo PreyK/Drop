@@ -150,7 +150,7 @@ namespace Drop
                     Fill = new SolidColorBrush(Colors.Red)
                 };
                 DropUser u = new DropUser();
-                u.InitMe("dummy");
+                u.InitMe("asd.asd.asd");
                 u.Width = 80;
                 u.Height = 80;
                 canvas.Children.Add(u);
