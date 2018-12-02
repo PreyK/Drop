@@ -11,7 +11,7 @@ namespace Drop
         [STAThread]
         static void Main(string[] args)
         {
-            BuildAvaloniaApp().Start<MainWindow>();
+            BuildAvaloniaApp().Start<SplashWindow>();
         }
         public static AppBuilder BuildAvaloniaApp()
             => AppBuilder.Configure<App>()

@@ -16,6 +16,7 @@
   <ItemGroup>
     <None Remove="DropUser.xaml" />
     <None Remove="GetFileDialog.xaml" />
+    <None Remove="SplashWindow.xaml" />
     <None Remove="Window1.xaml" />
   </ItemGroup>
   <ItemGroup>
@@ -23,6 +24,9 @@
       <Generator>MSBuild:Compile</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="GetFileDialog.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="SplashWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Window1.xaml">

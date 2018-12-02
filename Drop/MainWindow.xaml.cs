@@ -74,14 +74,6 @@ namespace Drop
 
         void SetMyPic()
         {
-            System.Drawing.Bitmap f = new System.Drawing.Bitmap("Assets\\profile.jpg");
-
-            System.Drawing.Image i = Utils.GraphicsExtensions.MakeSquarePhoto(f, 512);
-            System.Drawing.Image dst = Utils.GraphicsExtensions.CropToCircle(i, System.Drawing.Color.Transparent);
-
-            dst.Save("Assets\\profile_ca.jpg");
-
-
             Bitmap aw = new Bitmap("Assets\\profile_ca.jpg");
 
             var u = this.Get<Image>("MeUser");
@@ -95,8 +87,7 @@ namespace Drop
 
             var ub = this.Get<Image>("MeBg");
 
-           //n this.Get<RotateTransform>("asd").Angle = 180;
-            //rotator = this.Get<RotateTransform>("asd");
+        
             ub.ZIndex = -10;
             ub.Width = 130;
             ub.Height = 130;
@@ -116,7 +107,6 @@ namespace Drop
                 if(UserImg.Width<120)
                 UserImg.Width = Mathf.BounceEaseOut(fcycle, 0, 120, 1.5f/0.016f);
             });
-
         }
         int c=0;
         public void BtnClick()
