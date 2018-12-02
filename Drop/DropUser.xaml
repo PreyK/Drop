@@ -2,6 +2,6 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
   <StackPanel>
     <Image DragDrop.AllowDrop="True" Name="UserImage"></Image>
-  <TextBlock Name="UserName"></TextBlock>
+    <TextBlock Name="UserName">asdawd</TextBlock>
   </StackPanel>
 </UserControl>

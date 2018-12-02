@@ -17,7 +17,7 @@ namespace Drop.Networking
         public static event OnMessageRecived OnMessageEvent;
 
         //unimplemented
-        static string userName;
+        public static string userName;
 
         //dá ports
         const int udpPort = 54545;

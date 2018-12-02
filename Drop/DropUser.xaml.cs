@@ -20,13 +20,7 @@ namespace Drop
             this.InitializeComponent();
 
             AddHandler(DragDrop.DropEvent, Drop);
-            AddHandler(DragDrop.DragOverEvent, DragOver);
         }
-
-        private void DragOver(object sender, DragEventArgs e)
-        {
-        }
-
         private void Drop(object sender, DragEventArgs e)
         {
             System.Diagnostics.Debug.WriteLine("drop"+ string.Join(Environment.NewLine, e.Data.GetFileNames()));
@@ -43,30 +37,30 @@ namespace Drop
             AvaloniaXamlLoader.Load(this);
         }
 
-        public void InitMe(string userName)
+        public void InitMe(string uip, string userName)
         {
+            ip = uip;
+            name = userName;
             SetUserImage();
-            SetUserIp(userName);
+            DisplayName(userName);
         }
         public void SetUserImage()
         {
 
             var u = this.Get<Image>("UserImage");
-            u.Width = 60;
-            u.Height = 60;
-            u.Margin = new Avalonia.Thickness(0, 0, 0, 0);
+            u.Width = 100;
+            u.Height = 100;
+            u.Margin = new Avalonia.Thickness(10, 10, 10, 10);
 
             Bitmap b = new Bitmap("Assets\\profile_ca.jpg");
 
             u.Source = b;
         }
-        public void SetUserIp(string s)
+        public void DisplayName(string s)
         {
-            ip = s;
             var usert = this.Get<TextBlock>("UserName");
             usert.TextAlignment = Avalonia.Media.TextAlignment.Center;
             usert.Text = s;
-            usert.Margin = new Avalonia.Thickness(0, 0, 0, 0);
         }
     }
 }
